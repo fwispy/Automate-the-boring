@@ -26,7 +26,7 @@ def isValidChessboard(currentPieces,bpieces,wpieces):
                 print('More than 8 white pawns detected, board is not valid.')
         if 'bp' in currentPieces:
             if currentPieces['bp'] > 8:
-                print('More than 8 white pawns detected, board is not valid.')
+                print('More than 8 black pawns detected, board is not valid.')
         if wpieces[0] > 16 or bpieces[0] > 16:
             print('More pieces of a colour detected, board is not valid.')
         else:
