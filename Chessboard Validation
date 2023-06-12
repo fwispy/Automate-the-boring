@@ -1,6 +1,7 @@
 currentPieces={}
 bpieces = [0]
 wpieces = [0]
+validboard = []
 
 def sumPieces(pieces):
     if 'bk' not in pieces.keys() or 'wk' not in pieces.keys():
@@ -9,8 +10,11 @@ def sumPieces(pieces):
     for k in pieces:
         if k == 'bp' or k == 'bk' or k == 'bq' or k == 'br' or k == 'bb' or k =='bn':
             bpieces[0] += pieces[k]
-        if k == 'wp' or k == 'wk' or k == 'wq' or k == 'wr' or k == 'wb' or k =='wn':
+        elif k == 'wp' or k == 'wk' or k == 'wq' or k == 'wr' or k == 'wb' or k =='wn':
             wpieces[0] += pieces[k]
+        else:
+            print('Please enter appropriate names for pieces.')
+            exit()
 
 def count(board):
     for k in board:
@@ -32,11 +36,18 @@ def isValidChessboard(currentPieces,bpieces,wpieces):
         else:
             print('Chessboard is valid')
 
-chessboard = {'2a':'bp', '2b': 'bp', '2c':'bp', '2d': 'bp', '2e': 'bp',\
-         '2f': 'bp', '2g': 'bp', '2h': 'bp',\
-         '1a': 'br', '1b': 'bn', '1c': 'bb', '1d': 'bq', \
-         '1e':'bk', '1f': 'br', '1g': 'bn', '1h': 'bb', \
-         '3a': 'bq', '7b': 'wk', '7c': 'wq'}
+for x in range(8):
+    for y in range(8):
+        validboard.append(str(1 + y) + chr(97 + x))
+#Generates a list containing all coordinates that will be used to check if input is a valid chessboard
+
+chessboard = {'1a':'bk', '8f':'wk', '1b':'zq', '6d': 'wq'} 
+#Replaceable with input
          
+for k in chessboard.keys():
+    if k not in validboard:
+        print('Please enter a valid chessboard.')
+        exit()
+
 count(chessboard)
 isValidChessboard(currentPieces,bpieces,wpieces)
